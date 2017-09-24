@@ -41,3 +41,49 @@ Please feel free to use a different markup language if you do not plan to run
 * 管理画面があること(dive12を参照)
 * 例外処理を行うこと(dive13を参照)
 * 適切に日本語化すること
+
+[TODO]
+* gem install bundler
+* edit GemFile
+>gem 'pg', '~> 0.20.0'
+* c9 open config/database.yml 
+> template: template0
+* sudo service postgresql start
+* rake db:create
+* rake db:migrate
+* git init
+* git remote add origin [Repository] 
+* heroku login
+* heroku create
+* rails s -b $IP -p $PORT
+* c9 open .rubocop.yml
+---
+Rails:
+  Enabled: true
+
+# "Missing top-level class documentation comment."を無効
+Style/Documentation:
+  Enabled: false
+
+# "Line is too long"を無効
+Metrics/LineLength:
+  Enabled: false
+---
+
+-Asset PreCompile
+c9 open config/environments/production.rb
+
+config.assets.compile = false
+--> config.assets.compile = true
+
+rake assets:precompile RAILS_ENV=production
+
+c9 open Gemfile
+gem 'rails_12factor', group: :production
+
+bundle install
+
+git push heroku master
+
+heroku run rake db:migrate RAILS_ENV=production
+heroku config:add SECRET_TOKEN="$(bundle exec rake secret)"
