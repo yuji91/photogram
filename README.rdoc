@@ -99,6 +99,18 @@ c9 open config/initializers/devise.rb
 * add !authenticate_user to Controller
 
 ---
+[RailsAdmin]https://diver.diveintocode.jp/textbooks/17
+rails g rails_admin:install
+c9 open config/locales/rails_admin.ja.yml
+rails g migration AddAdminToUser admin
+c9 open db/migrate/XXX_add_admin_to_user
+> admin :string --> :boolean, :default => false
+rake db:migrate
+rails g cancan:ability
+c9 open app/models/ability.rb
+c9 open config/initializers/rails_admin.rb
+
+---
 
 [TODO]
 add relational to users ex:)has_many
