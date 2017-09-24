@@ -1,32 +1,5 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
-
 * HTML,CSS,Bootstrapを使用して、現実のinstagramアプリに似せたデザインにすること(任意　詳しくは後述）
 * pictureの投稿機能・編集機能・一覧機能・削除機能があること
 * ログイン機能があること
@@ -87,3 +60,45 @@ git push heroku master
 
 heroku run rake db:migrate RAILS_ENV=production
 heroku config:add SECRET_TOKEN="$(bundle exec rake secret)"
+
+
+---
+[Login]https://diver.diveintocode.jp/textbooks/12
+gem 'sqlite3' #for devise:install
+rails generate devise:install
+rails generate devise user
+rake db:migrate
+rails generate devise:views
+Follow Device Install Message
+c9 open app/assets/stylesheets/application.css
+>  .flash { color: white; padding-top: 10px; }
+c9 open config/locales/devise.ja.yml
+> https://gist.github.com/kaorumori/7276cec9c2d15940a3d93c6fcfab19f3
+c9 open config/application.rb
+> config.i18n.default_locale = :ja
+
+#Fix Layout
+c9 open app/views/devise/sessions/new.html.erb
+c9 open app/views/devise/registrations/new.html.erb
+c9 open app/views/devise/passwords/new.html.erb
+c9 open app/views/devise/passwords/edit.html.erb
+c9 open app/controllers/XXXs_controller.rb
+> class XXXsController < ApplicationController
+  before_action :authenticate_user!
+  
+rails g migration AddNameToUsers name:string
+rake db:migrate
+app/controllers/application_controller.rb
+
+#add nameSpace
+c9 open app/views/devise/registrations/new.html.erb
+c9 open app/views/devise/registrations/edit.html.erb
+c9 open config/initializers/devise.rb
+> comment out config.secret_key
+[TODO]
+* add !authenticate_user to Controller
+
+---
+
+[TODO]
+add relational has_many

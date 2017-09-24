@@ -53,7 +53,7 @@ end
 gem 'twitter-bootstrap-rails'
 
 gem 'rails_12factor', group: :production
-
+gem 'sqlite3'
 gem 'devise'
 gem 'faker'
 gem 'rails_admin'
