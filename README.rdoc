@@ -101,4 +101,4 @@ c9 open config/initializers/devise.rb
 ---
 
 [TODO]
-add relational has_many
+add relational to users ex:)has_many
