@@ -61,9 +61,7 @@ git push heroku master
 heroku run rake db:migrate RAILS_ENV=production
 heroku config:add SECRET_TOKEN="$(bundle exec rake secret)"
 
-
----
-[Login]https://diver.diveintocode.jp/textbooks/12
+[Login_with devise]--------------------------------
 gem 'sqlite3' #for devise:install
 rails generate devise:install
 rails generate devise user
@@ -95,11 +93,11 @@ c9 open app/views/devise/registrations/new.html.erb
 c9 open app/views/devise/registrations/edit.html.erb
 c9 open config/initializers/devise.rb
 > comment out config.secret_key
+[SEE ALSO:https://diver.diveintocode.jp/textbooks/12]
 [TODO]
 * add !authenticate_user to Controller
 
----
-[RailsAdmin]https://diver.diveintocode.jp/textbooks/17
+[RailsAdmin]-----------------------------------------
 rails g rails_admin:install
 c9 open config/locales/rails_admin.ja.yml
 rails g migration AddAdminToUser admin
@@ -109,8 +107,8 @@ rake db:migrate
 rails g cancan:ability
 c9 open app/models/ability.rb
 c9 open config/initializers/rails_admin.rb
-
----
+[SEE ALSO:https://diver.diveintocode.jp/textbooks/17]
+-----------------------------------------------------
 
 [TODO]
 add relational to users ex:)has_many
