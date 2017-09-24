@@ -2,7 +2,7 @@
 
 * HTML,CSS,Bootstrapを使用して、現実のinstagramアプリに似せたデザインにすること(任意　詳しくは後述）
 * pictureの投稿機能・編集機能・一覧機能・削除機能があること
-* ログイン機能があること
+- ログイン機能があること
 * ログイン機能には、メール認証機能があること
 * facebookとtwitterでログインできるようにすること
 * UserとPictureをひも付けて誰がPictureを投稿したか分かるようにすること
@@ -11,7 +11,7 @@
 * Githubで管理していること、そしてソースコードを送信したリポジトリを提出すること
 * Herokuにアップロードしてある状態であること
 * エラーメッセージとフラッシュメッセージが適切に表示されること
-* 管理画面があること(dive12を参照)
+- 管理画面があること(dive12を参照)
 * 例外処理を行うこと(dive13を参照)
 * 適切に日本語化すること
 
@@ -108,7 +108,19 @@ rails g cancan:ability
 c9 open app/models/ability.rb
 c9 open config/initializers/rails_admin.rb
 [SEE ALSO:https://diver.diveintocode.jp/textbooks/17]
------------------------------------------------------
+
+[ErrorPage]------------------------------------------
+mkdir public/assets
+c9 open public/404.html
+c9 open public/500.html
+c9 open config/environments/development.rb
+> config.consider_all_requests_local = false
+c9 open config/environments/development.rb
+> BetterErrors::Middleware.allow_ip! "0.0.0.0/0"
+[SEE ALSO:https://diver.diveintocode.jp/textbooks/18]
+
+[Mailer]---------------------------------------------
+[SEE ALSO:https://diver.diveintocode.jp/textbooks/16]
 
 [TODO]
 add relational to users ex:)has_many
