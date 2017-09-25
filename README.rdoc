@@ -119,6 +119,12 @@ c9 open config/environments/development.rb
 > BetterErrors::Middleware.allow_ip! "0.0.0.0/0"
 [SEE ALSO:https://diver.diveintocode.jp/textbooks/18]
 
+[DONE]-----------------------------------------------
+
+[TODO]-----------------------------------------------
+git rm remote origin
+git remote add origin git@github.com:yuji91/XXX.git
+
 [SNS Login]------------------------------------------
 [SEE ALSO:https://diver.diveintocode.jp/textbooks/19]
 
