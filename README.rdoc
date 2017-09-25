@@ -12,7 +12,7 @@
 * Herokuにアップロードしてある状態であること
 * エラーメッセージとフラッシュメッセージが適切に表示されること
 - 管理画面があること(dive12を参照)
-* 例外処理を行うこと(dive13を参照)
+- 例外処理を行うこと(dive13を参照)
 * 適切に日本語化すること
 
 [TODO]
@@ -119,8 +119,16 @@ c9 open config/environments/development.rb
 > BetterErrors::Middleware.allow_ip! "0.0.0.0/0"
 [SEE ALSO:https://diver.diveintocode.jp/textbooks/18]
 
+[SNS Login]------------------------------------------
+[SEE ALSO:https://diver.diveintocode.jp/textbooks/19]
+
+[heroku setup]---------------------------------------
+
 [Mailer]---------------------------------------------
 [SEE ALSO:https://diver.diveintocode.jp/textbooks/16]
+
+[rails generate model]-------------------------------
+
 
 [TODO]
 add relational to users ex:)has_many
