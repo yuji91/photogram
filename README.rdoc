@@ -122,13 +122,77 @@ c9 open config/environments/development.rb
 [DONE]-----------------------------------------------
 
 [TODO]-----------------------------------------------
-git rm remote origin
+git remote rm origin
 git remote add origin git@github.com:yuji91/XXX.git
 
-[SNS Login]------------------------------------------
+[heroku setup]---------------------------------------
+heroku login
+heroku create
+http://photogram-yuji911227.c9users.io:8080/
+https://sheltered-anchorage-78256.herokuapp.com/
+[SNS Login_Facebook]------------------------------------------
+
+ダッシュボード > 設定 > ベーシック より、IDとSecretをメモ
+dive-into-code_photogram-develop
+アプリID  :270755886764299
+app secret:425069781a09127fbfb3639fa61967f3
+
+
+dive-into-code_photogram-product
+525550474450105
+38d8dff0ec7cc6951c40acecca8ecacd
+
+アプリドメインと、サイトURLに設定して、変更を保存
+サイトURLの登録方法 --> [+プラットフォームを追加] > ウェブサイト > サイトURL
+
+[SNS Login_twitter]----------------------------------
+https://twitter.com/ and Login
+https://dev.twitter.com/ 
+Manage My Apps
+Website
+Callback URL
+-->http://photogram-yuji911227.c9users.io/
+Keys and Access Tokens
+
+dive-into-code_photogram-develop
+Consumer Key (API Key)	EtNzUFhQReig953tF8M7l0cAl
+Consumer Secret (API Secret)	l86TuLxrOCPhBvyLd2qWOknL3e92qx1nzf9fdc41mrjMbDYCBg
+
+dive-into-code_photogram-product
+Consumer Key (API Key)	Tj6Nkso40fYeYbZKETQvoF2pQ
+Consumer Secret (API Secret)	4y8Otk5hU2oXOnK8DrMVSBz6MkKSqbHlm6IVIUqtGoBS4gnktw
+
+
+c9 open config/initializers/devise.rb
+c9 open .env
+c9 open .gitignore
+
+heroku config:add FACEBOOK_ID_PRODUCTION=メモしておいたID値
+heroku config:add FACEBOOK_SECRET_PRODUCTION=メモしておいたAppSecret値
+heroku config:add TWITTER_ID_PRODUCTION=achieve_producitonのConsumer Key（API Key）の値
+heroku config:add TWITTER_SECRET_PRODUCTION=achieve_producitonのConsumer Secret（API Secret）の値
+
+heroku config:add FACEBOOK_ID_PRODUCTION=525550474450105
+heroku config:add FACEBOOK_SECRET_PRODUCTION=38d8dff0ec7cc6951c40acecca8ecacd
+heroku config:add TWITTER_ID_PRODUCTION=Tj6Nkso40fYeYbZKETQvoF2pQ
+heroku config:add TWITTER_SECRET_PRODUCTION=4y8Otk5hU2oXOnK8DrMVSBz6MkKSqbHlm6IVIUqtGoBS4gnktw
+
+rails g migration AddOmniauthColumnsToUsers uid provider image_url
+modify migrate add_omniauth_columns
+rake db:migrate:reset
+mkdir app/controllers/users
+rails g controller users::OmniauthCallbacks
+c9 open app/controllers/users/omniauth_callbacks_controller.rb
+> < Devise::OmniauthCallbacksController
+c9 open app/models/user.rb
+rails g controller users::registrations
+c9 open app/controllers/users/registrations_controller.rb
+
+c9 open app/helpers/application_helper.rb
+assets/images --> no_image.png
 [SEE ALSO:https://diver.diveintocode.jp/textbooks/19]
 
-[heroku setup]---------------------------------------
+
 
 [Mailer]---------------------------------------------
 [SEE ALSO:https://diver.diveintocode.jp/textbooks/16]
