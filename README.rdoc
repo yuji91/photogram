@@ -190,6 +190,9 @@ c9 open app/controllers/users/registrations_controller.rb
 
 c9 open app/helpers/application_helper.rb
 assets/images --> no_image.png
+
+heroku pg:reset DATABASE
+heroku run rake db:migrate
 [SEE ALSO:https://diver.diveintocode.jp/textbooks/19]
 
 
