@@ -192,11 +192,30 @@ c9 open app/helpers/application_helper.rb
 assets/images --> no_image.png
 
 herokuにpushする際、sqlite3をGemFileから除外すること
+除外した際、bundle update,bundle installを行うこと
 
 heroku pg:reset DATABASE
 heroku run rake db:migrate
+
+[TODO]Picture一覧ページに投稿者のプロフィール画像が表示されること。
+<% @blogs.each do |blog| %>
+  <!-- 省略 -->
+  <!-- 以下を追記する -->
+  <%= profile_img(適切な値を引数として渡す) %>
+<% end %>
+
 [SEE ALSO:https://diver.diveintocode.jp/textbooks/19]
 
+
+rails g controller pictures index
+rails g model Picture title:text user:references
+
+class User < ApplicationRecord
+  has_many :pictures, dependent: :destroy
+
+Picture
+- Title(NullOK)
+- user_id(NotNull)
 
 
 [Mailer]---------------------------------------------
@@ -207,3 +226,23 @@ heroku run rake db:migrate
 
 [TODO]
 add relational to users ex:)has_many
+Picture一覧ページに投稿者のプロフィール画像が表示されること。
+
+[picture_Action]
+-new
+-create
+-index
+-edit
+-update (title,picture)
+-delete
+
+NoNeed
+-show
+
+[Picture_Columns]
+-user_id
+-title
+
+rails g controller picture
+rails g model picture
+
