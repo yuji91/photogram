@@ -6,6 +6,9 @@ class User < ActiveRecord::Base
          :omniauthable
          
   mount_uploader :avatar, AvatarUploader #deviseの設定配下に追記
+  
+  # Assotiation_to_Model
+  has_many :pictures, dependent: :destroy
          
   def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
     user = User.find_by(provider: auth.provider, uid: auth.uid)

@@ -4,6 +4,6 @@ Rails.application.routes.draw do
     registrations: "users/registrations",
     omniauth_callbacks: "users/omniauth_callbacks"
   }
-  #resources :pictures, only: %i[index update destroy edit new create]
-  #root 'pictures#index'
+  resources :pictures, only: %i[index new create edit update destroy]
+  root 'pictures#index'
 end

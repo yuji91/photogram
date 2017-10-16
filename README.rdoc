@@ -207,14 +207,14 @@ heroku run rake db:migrate
 [SEE ALSO:https://diver.diveintocode.jp/textbooks/19]
 
 
+rails g model Picture caption:text user:references
 rails g controller pictures index
-rails g model Picture title:text user:references
 
 class User < ApplicationRecord
   has_many :pictures, dependent: :destroy
 
 Picture
-- Title(NullOK)
+- caption(NullOK)
 - user_id(NotNull)
 
 
@@ -242,7 +242,35 @@ NoNeed
 [Picture_Columns]
 -user_id
 -title
+-picture
 
-rails g controller picture
-rails g model picture
+rails g model picture caption:text user:references
+rails generate migration add_picture_to_pictures picture:string
+mount_uploader :picture, PictureUploader
 
+user.rb
+has_many :pictures, dependent: :destroy
+
+rake db:migrate
+
+rails g controller pictures
+
+add_picture_to_picture
+choose_new_or_edit を実装するか否か
+_form.html.erb
+<%= form_for(@picture, url: choose_new_or_edit) do |f| %>
+ #省略
+<% end %>
+
+--> confirmActionが不要のため、削除
+本来はpictures_helper.rbに定義する
+
+app/assets/stylesheets/normalize.css
+
+class Picture < ActiveRecord::Base
+  belongs_to :user
+  #mount_uploader :picture, PictureUploader
+  validates  :caption, length: { maximum: 140 }
+end
+
+replace 大文字と小文字を区別せずに置換していた
