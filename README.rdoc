@@ -399,5 +399,6 @@ config/environments/production.rb
 config.assets.compile = true
 
 heroku run rake db:migrate
+rake assets:precompile RAILS_ENV=production
 heroku run rake assets:precompile RAILS_ENV=production
 git push heroku master
