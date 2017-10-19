@@ -395,10 +395,14 @@ class AddConfirmableToDevise < ActiveRecord::Migration
     execute("UPDATE users SET confirmed_at = date('now')")
 https://stackoverflow.com/questions/41116400/no-such-function-now-during-migration
 --------------------------------------------------------------------------------
+heroku run rake db:migrate
+
 config/environments/production.rb
 config.assets.compile = true
 
-heroku run rake db:migrate
+git ls-files
+git rm -rf public/assets
+git add .
+
 rake assets:precompile RAILS_ENV=production
-heroku run rake assets:precompile RAILS_ENV=production
 git push heroku master
