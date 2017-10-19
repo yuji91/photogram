@@ -2,13 +2,21 @@
   <div class="wrapper col-md-8 col-md-offset-2 col-sm-10">
     <p><%= notice %></p>
     <h1>写真一覧</h1>
-      <%= link_to "写真を投稿する", new_picture_path, class: 'btn btn-default' %>
+      <%= link_to "写真を投稿する", new_picture_path, class: 'btn btn-primary'%>
       <% @pictures.each do |picture| %>
         <div class="row">
           <div class="col-md-4 col-sm-4"><%= profile_img(picture.user) %>
           @<%= picture.user.name %></h4></div>
-          <div>Insert Picture to here</div>
-          <div class="col-md-4 col-sm-4"><h4><%= picture.caption %></div>
+          <div>
+            <%= link_to(picture) do %>
+            　<%= image_tag picture.picture if picture.picture? %>
+            <% end %>
+          </div></br>
+          <div class="col-md-4 col-sm-4"><h4><%= truncate(picture.caption, length: 20) %>
+          <% if picture.caption.length > 20 %>
+            <%= link_to '続きを読む', picture %>
+          <% end %>
+          </div></br>
           <%= link_to "編集", edit_picture_path(picture.id), class: 'btn btn-default btn-sm btn-success' %>
           <%= link_to "削除", picture_path(picture.id), method: :delete,
           data: { confirm: '本当に削除していいですか？'}, class: 'btn btn-default btn-sm btn btn-danger' %>

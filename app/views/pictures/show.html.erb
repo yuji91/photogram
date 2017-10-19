@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="wrapper col-md-8 col-md-offset-2 col-sm-10">
+    <h1>写真詳細</h1>
+      <% picture = @picture %>
+        <div class="row">
+          <div class="col-md-4 col-sm-4"><%= profile_img(picture.user) %>
+          @<%= picture.user.name %></h4></div></br>
+          <div><%= image_tag picture.picture if picture.picture? %></div></br>
+          <div class="col-md-4 col-sm-4"><h4><%= picture.caption %>
+          </div></br></br>
+          <%= link_to "編集", edit_picture_path(picture.id), class: 'btn btn-default btn-sm btn-success' %>
+          <%= link_to "削除", picture_path(picture.id), method: :delete,
+          data: { confirm: '本当に削除していいですか？'}, class: 'btn btn-default btn-sm btn btn-danger' %>
+        </div>
+  </div>
+</div>

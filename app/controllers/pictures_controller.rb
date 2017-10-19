@@ -1,6 +1,6 @@
 class PicturesController < ApplicationController
  before_action :authenticate_user!
- before_action :set_picture, only: %i[edit update destroy]
+ before_action :set_picture, only: %i[edit show update destroy]
   def index
     @pictures = Picture.all.includes(:user)
   end
@@ -26,8 +26,9 @@ class PicturesController < ApplicationController
     end
   end
 
-  def edit
-  end
+  def edit; end
+    
+  def show; end
   
   def update
     @picture.update(pictures_params)
