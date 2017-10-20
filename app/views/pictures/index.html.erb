@@ -11,15 +11,17 @@
             <%= link_to(picture) do %>
             　<%= image_tag picture.picture if picture.picture? %>
             <% end %>
-          </div></br>
+          </div>
           <div class="col-md-4 col-sm-4"><h4><%= truncate(picture.caption, length: 20) %>
           <% if picture.caption.length > 20 %>
             <%= link_to '続きを読む', picture %>
           <% end %>
-          </div></br>
-          <%= link_to "編集", edit_picture_path(picture.id), class: 'btn btn-default btn-sm btn-success' %>
-          <%= link_to "削除", picture_path(picture.id), method: :delete,
-          data: { confirm: '本当に削除していいですか？'}, class: 'btn btn-default btn-sm btn btn-danger' %>
+          </div>
+          <div>
+            <%= link_to "編集", edit_picture_path(picture.id), class: 'btn btn-default btn-sm btn-success' %>
+            <%= link_to "削除", picture_path(picture.id), method: :delete,
+            data: { confirm: '本当に削除していいですか？'}, class: 'btn btn-default btn-sm btn btn-danger' %>
+          </div>
         </div>
       <% end %>
   </div>
