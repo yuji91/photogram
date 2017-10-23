@@ -178,10 +178,6 @@ heroku config:add FACEBOOK_SECRET_PRODUCTION=メモしておいたAppSecret値
 heroku config:add TWITTER_ID_PRODUCTION=achieve_producitonのConsumer Key（API Key）の値
 heroku config:add TWITTER_SECRET_PRODUCTION=achieve_producitonのConsumer Secret（API Secret）の値
 
-heroku config:add FACEBOOK_ID_PRODUCTION=525550474450105
-heroku config:add FACEBOOK_SECRET_PRODUCTION=38d8dff0ec7cc6951c40acecca8ecacd
-heroku config:add TWITTER_ID_PRODUCTION=Tj6Nkso40fYeYbZKETQvoF2pQ
-heroku config:add TWITTER_SECRET_PRODUCTION=4y8Otk5hU2oXOnK8DrMVSBz6MkKSqbHlm6IVIUqtGoBS4gnktw
 
 rails g migration AddOmniauthColumnsToUsers uid provider image_url
 modify migrate add_omniauth_columns
